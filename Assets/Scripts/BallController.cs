@@ -11,6 +11,7 @@ public class BallController : MonoBehaviour
 //    public string stringValue; // "Hello World" "I Love Coding (if you believe)" "Diogo"
 
     public float HorizontalSpeed;
+    public float JumpForce;
     
     void Update() // Works in each Frame Renderer.
     {
@@ -28,7 +29,7 @@ public class BallController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-//            transform.position = transform.position + VerticalSpeed * Time.deltaTime;
+            transform.position += new Vector3(0f, JumpForce * Time.deltaTime);
         }
     }
 }
