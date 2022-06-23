@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionController : MonoBehaviour
 {
     public PlayerController player;
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.CompareTag("Key"))
@@ -17,6 +19,17 @@ public class CollisionController : MonoBehaviour
             {
                 Destroy(other.gameObject);
             }
+        }
+        
+        if (other.transform.CompareTag("Objective"))
+        {
+            LevelController.LoadNextLevel();
+        }
+
+
+        if (other.transform.CompareTag("Enemy"))
+        {
+            LevelController.RestartLevel();
         }
     }
 
