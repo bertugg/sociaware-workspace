@@ -165,3 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  dieProjectile: {fileID: 9169938984036360071, guid: aaaa9df113b664041bab59a1215053a8,
+    type: 3}

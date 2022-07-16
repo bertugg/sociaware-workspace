@@ -8,11 +8,6 @@ public class CollisionController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.transform.CompareTag("Key"))
-        {
-            player.hasKey = true;
-        }
-
         if (other.transform.CompareTag("Door"))
         {
             if (player.hasKey)
@@ -29,16 +24,22 @@ public class CollisionController : MonoBehaviour
 
         if (other.transform.CompareTag("Enemy"))
         {
-            LevelController.RestartLevel();
+            player.Damage(1);
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Key"))
         {
-            player.hasKey = true;
-            Destroy(other.gameObject);
+            player.AcquireKey(); // Acquire the key
+            other.gameObject.SetActive(false); // Remove Key from Game
+        }
+        
+        if (other.transform.CompareTag("Enemy"))
+        {
+            player.Damage(1);
         }
     }
 }
